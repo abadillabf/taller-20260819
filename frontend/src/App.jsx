@@ -22,7 +22,6 @@ function App() {
 
   function showWelcome() {
     window.history.pushState({}, '', '/welcome')
-    window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
   async function handleSubmit(event) {
@@ -60,7 +59,6 @@ function App() {
     sessionStorage.removeItem(TOKEN_KEY)
     setToken(null)
     window.history.replaceState({}, '', '/')
-    window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
   if (isWelcomePage() && token) {
