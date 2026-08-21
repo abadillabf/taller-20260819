@@ -16,6 +16,8 @@ Desde la carpeta `backend`:
 ```bash
 poetry install
 export JWT_SECRET_KEY="una-clave-secreta-segura"
+export ADMIN_USERNAME="admin"
+export ADMIN_PASSWORD="admin123"
 poetry run uvicorn app.main:app --reload
 ```
 
@@ -46,6 +48,8 @@ Desde `backend`, define una clave para entornos no locales y ejecuta:
 
 ```bash
 export JWT_SECRET_KEY="una-clave-secreta-segura"
+export ADMIN_USERNAME="admin"
+export ADMIN_PASSWORD="admin123"
 docker compose up --build
 ```
 

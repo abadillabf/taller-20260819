@@ -5,6 +5,8 @@ from fastapi.testclient import TestClient
 from jose import jwt
 
 os.environ.setdefault("JWT_SECRET_KEY", "test-secret-key")
+os.environ.setdefault("ADMIN_USERNAME", "admin")
+os.environ.setdefault("ADMIN_PASSWORD", "admin123")
 
 from app.main import ALGORITHM, app
 

@@ -1,3 +1,4 @@
+import hmac
 import os
 from datetime import datetime, timedelta, timezone
 
@@ -7,9 +8,6 @@ from pydantic import BaseModel
 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_SECONDS = 300
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "admin123"
-
 app = FastAPI(title="JWT API")
 
 
@@ -38,6 +36,19 @@ def get_secret_key() -> str:
     return secret_key
 
 
+def valid_credentials(credentials: Credentials) -> bool:
+    username = os.getenv("ADMIN_USERNAME")
+    password = os.getenv("ADMIN_PASSWORD")
+    if not username or not password:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Admin credentials are not configured",
+        )
+    return hmac.compare_digest(credentials.username, username) and hmac.compare_digest(
+        credentials.password, password
+    )
+
+
 def create_access_token(username: str) -> str:
     expires_at = datetime.now(timezone.utc) + timedelta(
         seconds=ACCESS_TOKEN_EXPIRE_SECONDS
@@ -63,10 +74,7 @@ def validate_token(token: str) -> str:
 
 @app.post("/token", response_model=TokenResponse)
 def login(credentials: Credentials) -> TokenResponse:
-    if (
-        credentials.username != ADMIN_USERNAME
-        or credentials.password != ADMIN_PASSWORD
-    ):
+    if not valid_credentials(credentials):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
