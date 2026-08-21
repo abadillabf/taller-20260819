@@ -3,12 +3,19 @@ import os
 from datetime import datetime, timedelta, timezone
 
 from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 from jose import JWTError, jwt
 from pydantic import BaseModel
 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_SECONDS = 300
 app = FastAPI(title="JWT API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=os.getenv("FRONTEND_ORIGINS", "http://localhost:5173").split(","),
+    allow_methods=["POST"],
+    allow_headers=["Content-Type"],
+)
 
 
 class Credentials(BaseModel):

@@ -34,6 +34,19 @@ def test_login_rejects_invalid_credentials() -> None:
     assert response.status_code == 401
 
 
+def test_frontend_can_send_login_requests() -> None:
+    response = client.options(
+        "/token",
+        headers={
+            "Origin": "http://localhost:5173",
+            "Access-Control-Request-Method": "POST",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.headers["access-control-allow-origin"] == "http://localhost:5173"
+
+
 def test_refresh_returns_a_new_token_for_a_valid_token() -> None:
     token = client.post(
         "/token", json={"username": "admin", "password": "admin123"}
