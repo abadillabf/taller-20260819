@@ -1,2 +1,4 @@
 # taller-20260819
-Ejemplo práctico de uso GtiHub agent coding 
+
+API de ejemplo para autenticación JWT. Consulta [backend/README.md](backend/README.md)
+para instalarla, ejecutarla y probarla.
