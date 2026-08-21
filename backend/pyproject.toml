@@ -1,0 +1,25 @@
+[project]
+name = "jwt-api"
+version = "0.1.0"
+description = "FastAPI JWT example"
+authors = [{ name = "Taller JWT" }]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dynamic = ["dependencies"]
+
+[tool.poetry]
+packages = [{ include = "app" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "0.115.12"
+uvicorn = { version = "0.34.0", extras = ["standard"] }
+python-jose = { version = "3.3.0", extras = ["cryptography"] }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.3.5"
+httpx = "0.28.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
