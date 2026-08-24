@@ -89,10 +89,60 @@ button:disabled {
 }
 
 .welcome-card {
+  max-width: 760px;
   text-align: center;
 }
 
 .welcome-card p {
   color: #4b5563;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
+}
+
+.certifications {
+  margin: 28px 0;
+  text-align: left;
+}
+
+.certifications h2 {
+  color: #111827;
+  font-size: 1.25rem;
+  margin: 0 0 16px;
+}
+
+.certification-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.certification-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.certification-card h3 {
+  color: #1e293b;
+  font-size: 1rem;
+  margin: 10px 0 8px;
+}
+
+.certification-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.certification-status {
+  color: #4f46e5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.certifications-link {
+  color: #4338ca;
+  display: inline-block;
+  font-weight: 700;
+  margin-top: 16px;
 }

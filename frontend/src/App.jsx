@@ -68,6 +68,35 @@ function App() {
           <span className="eyebrow">Sesión iniciada</span>
           <h1 id="welcome-title">¡Bienvenido!</h1>
           <p>Has accedido correctamente a la aplicación.</p>
+          <section className="certifications" aria-labelledby="certifications-title">
+            <h2 id="certifications-title">Certificaciones de IA Microsoft 2026</h2>
+            <div className="certification-grid">
+              <article className="certification-card">
+                <span className="certification-status">Nueva certificación</span>
+                <h3>Azure AI Apps and Agents Developer Associate</h3>
+                <p>
+                  Certificación orientada al desarrollo de aplicaciones y agentes
+                  de inteligencia artificial en Azure.
+                </p>
+              </article>
+              <article className="certification-card">
+                <span className="certification-status">Transición en 2026</span>
+                <h3>Azure AI Engineer Associate</h3>
+                <p>
+                  Microsoft anunció su retiro y recomienda la nueva certificación
+                  Azure AI Apps and Agents Developer Associate como reemplazo.
+                </p>
+              </article>
+            </div>
+            <a
+              className="certifications-link"
+              href="https://learn.microsoft.com/credentials/certifications/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ver certificaciones en Microsoft Learn
+            </a>
+          </section>
           <button type="button" onClick={handleLogout}>
             Cerrar sesión
           </button>
